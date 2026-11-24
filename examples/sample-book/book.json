@@ -1,0 +1,34 @@
+{
+  "title": "גינה על המרפסת",
+  "subtitle": "ספר לדוגמה",
+  "author": "פלוני אלמוני",
+  "lang": "he",
+  "dir": "rtl",
+  "manuscript_dir": "manuscript",
+  "build_dir": "build",
+  "output_name": "sample-book",
+  "review_dir": "review",
+  "review_name": "פרק {n} - {title}.docx",
+  "review_name_unnumbered": "{title}.docx",
+  "unnumbered_parts": [
+    "99-back"
+  ],
+  "parts": {
+    "01-basics": "חלק א: יסודות",
+    "02-plants": "חלק ב: צמחים",
+    "99-back": "נספחים"
+  },
+  "forbidden_chars": [
+    "—"
+  ],
+  "fonts": {
+    "body": "Noto Serif Hebrew",
+    "heading": "Noto Sans Hebrew"
+  },
+  "page_size": "A5",
+  "special_headings": {
+    "deep": "להעמקה",
+    "sources": "מקורות לפרק זה"
+  },
+  "language_fixes": "propose"
+}

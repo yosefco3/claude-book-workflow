@@ -1,0 +1,8 @@
+{
+  "name": "book-workflow",
+  "private": true,
+  "description": "Node dependency of scripts/md2docx.js (Markdown to RTL DOCX)",
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}

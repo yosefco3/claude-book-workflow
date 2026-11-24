@@ -1,0 +1,25 @@
+{
+  "title": "גינה על המרפסת",
+  "subtitle": "ספר לדוגמה",
+  "author": "פלוני אלמוני",
+  "front_image": "../assets/cover-front.png",
+  "trim": "A5",
+  "pages": 120,
+  "mm_per_page": 0.05,
+  "mm_per_page_note": "Paper thickness per page from your printer's spec or cover calculator. 0.05 is only an example value.",
+  "bleed": 3.2,
+  "safe": 6,
+  "spine_rotation": -90,
+  "isbn": null,
+  "back": {
+    "headline": "מרפסת קטנה, גינה שלמה",
+    "paragraphs": [
+      "אין צורך בחצר כדי לגדל עגבניות, נענע וחסה. מספיקות מרפסת פונה לשמש, כמה עציצים וקצת סבלנות.",
+      "הספר מלווה את המתחיל צעד אחר צעד: איך בוחרים אדמה, כמה משקים ומתי קוצרים, ומה עושים כשהצמחים לא משתפים פעולה."
+    ],
+    "tagline": "כל גינה מתחילה בעציץ אחד"
+  },
+  "colors": {"bg": "#24402f", "text": "#f6f1e3", "accent": "#d9b45a", "scrim": 0.5},
+  "fonts": {"title": "Noto Serif Hebrew", "body": "Noto Sans Hebrew"},
+  "sizes": {"title": 0.17, "subtitle": 0.045, "author": 0.055}
+}
