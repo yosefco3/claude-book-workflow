@@ -1,34 +1,72 @@
 # book-workflow
 
-A [Claude Code](https://claude.com/claude-code) skill for writing a book with Claude, from
-Markdown sources to print. It is written for Hebrew (right to left) first and works for
-left-to-right books as well.
+A [Claude Code](https://claude.com/claude-code) skill that helps you write a book with Claude,
+from research to the cover and the print layout. It is written for Hebrew (right to left) first
+and works for left-to-right books as well.
 
-The skill gives Claude two things. One is the method: where the source of truth lives, what
-runs after every change, what Claude may fix on its own and what goes to the author as a
-proposal, and how to handle the author's edits, an editor's report or a print upload. The other
-is a set of small scripts that do the mechanical parts.
+The skill gives Claude a method (where the source of truth lives, what runs after every change,
+what Claude may fix on its own and what goes to the author as a proposal) and a set of small
+scripts for the mechanical parts. Here is what it does, stage by stage.
 
-## What the method looks like
+## 1. Research: source books and summaries
 
-The manuscript is kept in two forms that always match: one Markdown file per chapter in
-`manuscript/`, which the build reads, and one Word file per chapter in `review/`, which the
-author opens in their own word processor. When Claude changes the Markdown, the chapter's DOCX
-is refreshed. When the author edits a chapter's DOCX and says "check chapter 7", Claude runs
-`docx_diff.py`, which reports every changed, added, deleted or re-formatted paragraph as JSON.
-Claude merges those edits into the Markdown as written, runs the book's language pass,
-rebuilds, commits, and reports what was merged, what was deleted and which proposals need the
-author's decision.
+Put the books you draw on (PDF, scanned PDF, EPUB or text) in a `sources/` folder inside the
+book. Claude extracts their text with line numbers (`extract_text.py`, with OCR for scans),
+summarises each book chapter by chapter (the ideas in paraphrase, the concepts, one or two short
+quotations with their exact location) and keeps a list of what has been summarised. On request
+it also gathers passages on one theme from several books into a single file. The books
+themselves stay out of git.
 
-Every change runs the same chain: a wording pass that removes phrasing typical of AI writing
-(the `humanizer` skill when installed; in the author's own text it fixes only clear cases),
-the full book in Markdown with a check for leftover em dashes, the PDF, and the chapter's DOCX.
+## 2. Planning the book
 
-The author decides once whether language fixes go in directly or are shown first for approval,
-and the choice is stored in `book.json`. A change of meaning or fact is always a proposal,
-shown with the current and the proposed wording, one at a time. Reports from outside readers,
-human or a model such as ChatGPT or Gemini, are split the same way. Decisions are written down
-with a date so a later session does not reopen them.
+Claude turns your articles, notes or ideas into a book plan: parts, chapter order, what goes in
+and what stays out. It sets up the project (`init_book.py`), a style sheet with your spelling
+and punctuation choices and the words of yours that must never be corrected, and a book map
+where every decision is written down with a date, so a later session does not reopen it.
+
+## 3. Writing chapters
+
+A chapter can start from an article, notes or a raw idea. Text you already wrote is not thinned,
+reordered or "improved" on Claude's own initiative. The body is written in plain language and
+paraphrase, with only a few short quotations, each checked against the source text; the heavier
+quotations and references go to a "Sources for this chapter" section. Every change then goes
+through a wording pass that removes phrasing typical of AI writing (the `humanizer` skill when
+installed).
+
+## 4. Your edits in Word
+
+The manuscript is kept in two forms that always match: one Markdown file per chapter, which the
+build reads, and one Word file per chapter in `review/`, which you open in your own word
+processor. You edit there and say "I edited chapter 7, check it". Claude finds every changed,
+added, deleted or re-formatted paragraph (`docx_diff.py`), merges it into the book as written,
+rebuilds and reports what was merged and what was deleted. A Word file that is open, or that
+holds edits not merged yet, is never overwritten.
+
+## 5. Editing and outside reviews
+
+You decide once whether language fixes go in directly or are shown to you first. A change of
+meaning or fact is always a proposal, the current wording next to the proposed one, for you to
+accept or reject one at a time. Reports from an editor or a reader, human or a model such as
+ChatGPT or Gemini, are split the same way. Claude also writes the prompt for an outside critic.
+
+## 6. Layout and print
+
+After every change Claude rebuilds the whole book in Markdown (with a check for leftover em
+dashes), the PDF through Chrome (title page, contents, part pages, figures, page numbers that
+follow Hebrew conventions) and the chapter's Word file. For print it prepares the interior at
+the trim size, checks figures for a black-and-white interior and reports the page count.
+
+## 7. Cover
+
+The full print wrap (back, spine and front) is built in code from `cover.json`, with the spine
+width taken from the page count, so a new page count gives a new cover. The front image is
+yours, or Claude writes a prompt for Gemini, ChatGPT or another image generator, or uses an image
+tool the session has. A CMYK version is made for the printer.
+
+## 8. Publishers and print-on-demand
+
+Claude prepares submission packages for publishers and the files a print-on-demand service
+asks for. Nothing is sent to anyone, put on sale or published online without your request.
 
 `SKILL.md` is the entry point. The details are in `references/`:
 
