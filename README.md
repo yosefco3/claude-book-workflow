@@ -38,6 +38,7 @@ with a date so a later session does not reopen them.
 | `writing-chapters.md` | adapting an article, writing from a raw idea, structure rules, quotations and sources, tone, the quality loop |
 | `author-roundtrip.md` | merging the author's DOCX edits, step by step, and the report |
 | `external-reviews.md` | prompts for outside critics, applying a language report, a recommendations document for content |
+| `sources.md` | source books: text extraction, a summary per chapter, theme collections, quoting safely |
 | `production.md` | the print PDF, Hebrew page numbering, black-and-white figures, print-on-demand files, spine and cover |
 | `cover.md` | the cover wrap, the front image (your own, or a prompt for Gemini, ChatGPT or another image model), typography in code |
 | `publishing.md` | the publishers' round, submission packages, a pen name |
@@ -71,6 +72,7 @@ follow the same contract but have not been run; issues are welcome.
 | `sync_docx.py` | regenerates the review DOCX of chosen chapters, skipping files that are open or hold edits not merged yet |
 | `docx_diff.py` | read only: what the author changed in a chapter's DOCX, as JSON or readable text |
 | `office.py` | detects editors and converters, converts files, tells whether a DOCX is open |
+| `extract_text.py` | a source book (PDF, scanned PDF with OCR, EPUB, TXT) to plain text with citable line numbers |
 | `make_cover.py` | the print-ready cover wrap (back, spine, front) from `cover.json`, with the spine width from the page count |
 | `bookconf.py` | shared by the others: reads `book.json` and lists chapters in book order |
 

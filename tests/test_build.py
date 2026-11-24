@@ -154,7 +154,8 @@ def test_init_book(tmp_path):
     assert conf["title"] == "My Book" and conf["forbidden_chars"] == []
     assert (d / "manuscript" / "00-front" / "01-intro.md").read_text(encoding="utf-8").startswith("# ")
     assert (d / "manuscript" / "assets").is_dir()
-    assert "review/" in (d / ".gitignore").read_text()
+    gi = (d / ".gitignore").read_text()
+    assert "review/" in gi and "sources/" in gi and ".work/" in gi
     assert run("init_book.py", str(d), "--title", "Again").returncode == 2
     # the new book builds
     assert run("build_book.py", "--root", str(d)).returncode == 0

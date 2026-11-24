@@ -69,7 +69,7 @@ def main(argv=None):
         "Introduction" if args.lang == "en" else "הקדמה"))
     os.makedirs(os.path.join(root, conf["manuscript_dir"], "assets"), exist_ok=True)
     created.append(os.path.join(conf["manuscript_dir"], "assets") + "/")
-    make(os.path.join(root, ".gitignore"), "build/*.pdf\nreview/\nnode_modules/\n")
+    make(os.path.join(root, ".gitignore"), "build/*.pdf\nreview/\nnode_modules/\nsources/\n.work/\n")
 
     tpl = os.path.join(SKILL_ROOT, "templates", "CLAUDE.md")
     if os.path.isfile(tpl):

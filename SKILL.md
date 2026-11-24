@@ -87,6 +87,7 @@ docs/STYLE.md        the style sheet (spelling decisions, punctuation, author's 
 manuscript/          the source: NN-part/NN-chapter.md, assets/, cover/
 build/               generated, overwritten every run
 review/              one DOCX per chapter for the author (outside git)
+sources/             source books the book draws on, with summaries (outside git; see sources.md)
 features-prompts/book/  foundation doc, book map, the single current handoff
 ```
 
@@ -103,6 +104,7 @@ the planning documents: [references/project-setup.md](references/project-setup.m
 | Language and critic loop | after every new or heavily edited chapter | [writing-chapters.md](references/writing-chapters.md#the-quality-loop) |
 | Author round-trip | "I edited chapter N", "check my corrections" | [author-roundtrip.md](references/author-roundtrip.md) |
 | External report | a report arrives from a human editor or reader, or from a model such as ChatGPT or Gemini; or the author wants a prompt for one | [external-reviews.md](references/external-reviews.md) |
+| Source books | the book draws on other books: extract text, summarise per chapter, quote safely | [sources.md](references/sources.md) |
 | Print files | PDF for print, page count, print-on-demand | [production.md](references/production.md) |
 | Cover | the full wrap (back, spine, front) for print, the front image | [cover.md](references/cover.md) |
 | Publishers | submission packages, the publishing plan | [publishing.md](references/publishing.md) |
@@ -148,6 +150,7 @@ If the book's `CLAUDE.md` lists its own build commands, run those instead, in it
 | `sync_docx.py` | regenerate the review DOCX of chosen chapters; skips files that are open or hold unmerged edits |
 | `docx_diff.py` | read-only: what the author changed in a chapter's DOCX, as JSON for precise merging |
 | `office.py` | detect installed editors and converters, convert files, tell whether a DOCX is open |
+| `extract_text.py` | a source book (PDF, scanned PDF with OCR, EPUB, TXT) to citable plain text in `.work/texts/` |
 | `make_cover.py` | the cover wrap from `manuscript/cover/cover.json`, spine width from the page count (`cover_geometry.py`) |
 | `bookconf.py` | shared: reads book.json and lists chapters in book order |
 
