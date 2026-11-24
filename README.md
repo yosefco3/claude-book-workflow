@@ -1,8 +1,17 @@
 # book-workflow
 
+[עברית](README.he.md)
+
 A [Claude Code](https://claude.com/claude-code) skill that helps you write a book with Claude,
-from research to the cover and the print layout. It is written for Hebrew (right to left) first
-and works for left-to-right books as well.
+from research to the cover and the print layout. It is made mainly for non-fiction: research in
+source books, chapters built from articles and ideas, careful quotation and a sources section
+per chapter. It is written for Hebrew (right to left) first and works for left-to-right books
+as well.
+
+The parts that do not depend on the genre work for any book, a novel or a memoir included: the
+Word files kept in sync with the text, merging your edits, the PDF and page numbers, the cover
+and the print files. Fiction would need tools the skill does not have, such as tracking
+characters, plot and continuity.
 
 The skill gives Claude a method (where the source of truth lives, what runs after every change,
 what Claude may fix on its own and what goes to the author as a proposal) and a set of small
