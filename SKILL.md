@@ -117,8 +117,10 @@ After every change to the source, run from the book root, in order:
 1. **Wording pass against AI phrasing** on the text that changed: the `humanizer` skill if it
    is installed, otherwise the list in [writing-chapters.md](references/writing-chapters.md#tone-and-ai-tells).
    Wording only; in text the author wrote, only clear cases (a repetition, a staged question, a
-   closing line that restates the paragraph), keeping the author's voice. Changes of meaning go
-   to the report as proposals. Fixes follow `language_fixes`: with `apply` they go in; with
+   closing line that restates the paragraph), keeping the author's voice. In fiction, a line
+   that explains an image, or a narrator's announced insight, is not a clear case: it is flagged and
+   may get a rewrite (a lecture into an image), as `hebrew-short-story` pass 4 and its "Rewrites" section say.
+   Changes of meaning go to the report as proposals. Fixes follow `language_fixes`: with `apply` they go in; with
    `propose` they are listed in the report and the chain continues without them. If
    `book.json` has no `language_fixes` yet, ask the author once and record the answer.
 2. `python3 $SKILL/scripts/build_book.py`: the full book as one Markdown file. Read its output:
